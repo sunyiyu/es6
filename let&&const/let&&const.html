@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>let&&const</title>
+</head>
+<body>
+<script>
+//    1
+    for(let i = 0; i < 10; i++){
+        process(items[i]);
+    }
+    console.log(i); //i不存在，let声明的变量不会提升；
+//    此例，变量i值存在for循环中，一旦循环结束，在其他地方均无法访问；
+
+//    2
+    var funcs = [];
+    for(var i = 0; i < 10; i++){
+        funcs.push(function () {
+            console.log(i);
+        });
+    }
+    funcs.forEach(function (func) {
+        func();
+    });
+    //预期是输出数字0-9；但输出都是10；是因为循环里的每次迭代同时共享着变量i，循环内部创建的函数全部保留了相同变量的引用。循环结束时变量i=10，所以每次调用console.log(i)时就会输出数字10；
+
+
+    //传统解决办法；
+    var funcs = [];
+    for(var i = 0; i < 10; i++){
+        funcs.push((function (value) {
+            return function(){
+                console.log(value);
+            }
+        }(i)));
+    }
+    funcs.forEach(function (func) {
+        func();  //输出0，然后1-9；
+    })
+
+//    let就比较简便了
+    var funcs = [];
+    for(let i = 0; i < 10; i++){
+        funcs.push(function () {
+            console.log(i);
+        });
+    }
+    funcs.forEach(function (func) {
+        func();//输出0，然后1-9；
+    })
+</script>
+</body>
+</html>
