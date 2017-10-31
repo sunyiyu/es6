@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>es6中的构造函数</title>
+</head>
+<body>
+<!--es6专门的构造函数-->
+<script>
+    class Person{
+        constructor(name, sex){
+            this.name = name;
+            this.sex = sex;
+        }
+        showName(){
+            alert(this.name);
+        }
+//        static静态资源
+        static getMethod(){
+            return 'hello'
+        }
+    }
+//    实例化构造函数，还是一样的
+    var obj = new Person('CLAY','男');
+//    console.log(obj.name);
+//    obj.showName();
+//    console.log(obj.getMethod());//报错
+
+//    静态资源调用方法
+    console.log(Person.getMethod());
+
+
+
+    //    es6的继承（扩展）extends;
+    class Manager extends Person{
+        constructor(name, sex, password){
+//            super要继承的属性；
+            super(name, sex)
+//            新增加的属性；
+            this.password = password;
+        }
+    }
+    var obj2 = new Manager('syy', '男');
+//    console.log(obj2.name);
+//    obj2.showName();
+</script>
+</body>
+</html>

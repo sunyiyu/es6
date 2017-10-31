@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>构造函数</title>
+</head>
+<body>
+<script>
+    function Person(name, sex) {
+        this.name = name;
+        this.sex = sex;
+        this.showName = function () {
+            alert(this.name)
+        }
+    }
+    var obj1 = new Person('CLAY','男');
+
+    function Manager(name, sex, password) {
+        Person.call(this, name, sex);
+        this.password = password;
+    }
+    var obj2 = new Manager('syy', '男')
+    obj1.showName();
+</script>
+</body>
+</html>
