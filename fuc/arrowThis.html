@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>箭头函数中的this</title>
+</head>
+<body>
+<!--箭头函数中的this，始终指向函数被定义是的this；注意：箭头函数外层必须是一个函数-->
+<script>
+    var obj = {
+        a:5,
+        func:function () {
+            console.log(this.a);
+        },
+//        test:function () {
+////            var that = this;  //解决办法，再定时器外部将this赋值给一个变量；
+//            setTimeout(function () {
+////                that.func();
+//                this.func();
+//            },1)
+//        },
+
+//          改写成箭头函数；
+        test:function () {
+            setTimeout(() => {
+                this.func();
+            },1)
+        }
+    }
+    obj.test();//这样会报错；this已经指向window；找不到func；
+</script>
+</body>
+</html>

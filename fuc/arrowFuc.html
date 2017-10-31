@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>箭头函数</title>
+</head>
+<body>
+<script>
+//    直接是返回值的可以不用{}直接写return返回值； 单行逻辑；
+    var show = (a, b = 8) => a+b;
+    alert(show(5, 12))
+
+//多行逻辑
+    var show = (a, b = 8) => {
+        console.log("我是其他的内容");
+        return a+b;
+    }
+    alert(show(3));
+</script>
+</body>
+</html>
