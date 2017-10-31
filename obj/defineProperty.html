@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>defineProperty</title>
+</head>
+<body>
+<!--定义属性，vue等的双向数据绑定主要就是用defineProperty-->
+<script>
+    var data = {};//定义一个空对象；
+    //增加属性，原始方法
+//    data.a = 10;
+    Object.defineProperty(data, 'b', {
+        value:5, //属性值；
+        writable:false,//默认下是只读（不能重新设置），如果为false，属性的值就不能被重写，只能为只读了
+        configurable:false,//(总开关)，默认false（不能设置），一旦为false，就不能再设置它的（value,writable,configurable）
+        enumerable:true,//默认是false（不能遍历出来），是否能在for in循环遍历出来或在Object.keys()中列举出来；
+    })
+    data.b = 10;
+    console.log(data);
+    console.log(data.b);
+    console.log(Object.keys(data))
+</script>
+</body>
+</html>

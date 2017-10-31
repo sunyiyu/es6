@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>对象的扩展之简写</title>
+</head>
+<body>
+<script>
+    var a = 5;
+    var obj = {
+//        a:a
+//        如果键与值名相同，那么可以写成一个a;例如下
+        a,
+
+//        函数的简写；
+//        b:function(){
+//            console.log(this.a);
+//        }
+        b(){
+            console.log(this.a);
+        }
+//        就是去掉：function
+    }
+    console.log(obj);
+    obj.b();
+</script>
+</body>
+</html>

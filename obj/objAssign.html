@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数扩展之assign</title>
+</head>
+<body>
+<!--assign()是合并对象-->
+<script>
+    var a = 5;
+    var obj = {
+        a,
+        b(){
+            console.log(this.a);
+        }
+    }
+    var obj2 = {
+        c:10
+    }
+    Object.assign(obj2, obj)
+    console.log(obj2);//第一个参数是被更改对象；
+    console.log(obj);//第二个合并的对象
+</script>
+</body>
+</html>

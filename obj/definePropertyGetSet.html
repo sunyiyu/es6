@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>get/set访问器</title>
+</head>
+<body>
+<!--Object.defineProperty访问器-->
+<!--用了访问器，之前的value就不能用了-->
+<script>
+    var data = {};
+    Object.defineProperty(data, 'b',{
+        set(newValue){
+            console.log('给b设置了新的值');
+            console.log(newValue);
+        },
+        get(){
+            console.log('获取新的值');
+            return 5;
+        }
+    })
+    data.b = 5;
+    console.log(data.b)
+</script>
+</body>
+</html>

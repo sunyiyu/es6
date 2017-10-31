@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>对象扩展之keys</title>
+</head>
+<body>
+<!--用来获取对象中的键,返回一个数组-->
+<!--之前是for in 循环对象得到键、值-->
+<script>
+var a = 5;
+var obj = {
+    a,
+    b(){
+        console.log(this.a);
+    }
+}
+console.log(Object.keys(obj));
+//注意：key是扩展到Object，所以必须用Object调用；
+</script>
+</body>
+</html>
