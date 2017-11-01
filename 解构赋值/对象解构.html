@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>解构赋值之对象解构</title>
+</head>
+<body>
+<script>
+   /* let obj = {
+        name: 'CLAY',
+        sex:'男'
+    }*/
+//    这样可以不用写obj.**
+/*    let {name: uname, sex: usex} = obj;
+    console.log(uname);*/
+
+//    vue中经常见到以下写法，其实就是{name: name} = obj的简写；键值对一样的话可以缩写；
+    /*let {name} = obj;
+    console.log(name);*/
+
+
+
+
+    /*function show(a, b, c) {
+        console.log(a)
+    }
+    show(1, 2, 3);*/
+//    现在通常用法
+    function show(obj) {
+        console.log(obj.a);
+    }
+    show({
+        a:1,
+        b:2,
+        c:3
+    });
+
+//    通过解构赋值简写
+   function show(obj) {
+       let {a,b, c} = obj;
+       console.log(a);
+   }
+   show({
+       a:1,
+       b:2,
+       c:3
+   })
+</script>
+</body>
+</html>
