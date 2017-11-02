@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>躁动的小球</title>
+    <style>
+         #myCanvas{
+             border: 1px solid red;
+         }
+    </style>
+</head>
+<body>
+    <canvas id="myCanvas" width="500" height="500"></canvas>
+</body>
+<script>
+    var rand = (min, max) => parseInt(Math.random()*(max-min) + min);
+
+    var myCanvas = document.querySelector('#myCanvas');
+    var ctx = myCanvas.getContext('2d'); //获取上下文；
+
+//    最大宽/高;
+    const canvasWidth = myCanvas.width;
+    const canvasHeight = myCanvas.height;
+
+    class Ball{
+        constructor(ctx,canvasWidth, canvasHeight){
+            this.ctx = ctx;
+            //随机颜色；
+            this.color = `rgb(${rand(1,256)},${rand(1,256)},${rand(1,256)})`;
+            //随机半径；
+            var r = rand(5, 20);
+            this.r = r;
+            //坐标；
+            this.x = rand(r, canvasWidth-r);
+            this.y = rand(r, canvasHeight-r);
+
+            //可移动的封值；
+            this.maxWidth = canvasWidth-r;
+            this.maxHeight = canvasHeight-r;
+
+            //速度;
+            var speedX = rand(2, 6);
+            this.speedX = rand(0, 100)>50?speedX:-speedX;
+            var speedY = rand(2, 6);
+            this.speedY = rand(0, 100)>50?speedY:-speedY;
+        }
+        draw(){
+            this.ctx.beginPath();
+            this.ctx.fillStyle = this.color; //颜色；
+//    ctx.arc(x, y, radius半径, startAngle开始角度, endAngle结束角度, anticlockwise顺时针、逆时针) x,y坐标；
+            this.ctx.arc(this.x, this.y, this.r, 0, Math.PI*2, true) //绘制圆；
+            this.ctx.closePath();
+            this.ctx.fill();  //填充；
+        }
+        move(){
+            this.x += this.speedX;
+            if(this.x >= this.maxWidth){
+                //就是反方向走；
+                this.speedX *= -1;
+            }else if(this.x < this.r){
+                this.speedX *= -1;
+            }
+
+            this.y += this.speedY;
+            if(this.y >= this.maxHeight){
+                //就是反方向走；
+                this.speedY *= -1;
+            }else if(this.y < this.r){
+                this.speedY *= -1;
+            }
+        }
+    }
+
+    var balls = [];
+    for(let i=0; i<400; i++){
+        var ball = new Ball(ctx, canvasWidth, canvasHeight);
+        balls.push(ball);
+    }
+
+    setInterval(function () {
+        //先清除画布;canvas必须；
+        ctx.clearRect(0,0,canvasWidth,canvasHeight);
+        for(let i=0; i<balls.length; i++){
+            balls[i].draw();
+            balls[i].move();
+        }
+    },30)
+
+    /*var ball1 = new Ball(ctx, canvasWidth, canvasHeight);
+    ball1.draw();*/
+
+
+
+</script>
+</html>
