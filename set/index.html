@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>新增数据类型set</title>
+</head>
+<body>
+<script>
+    //1.创建一个集合；
+    //注意：集合中是绝对没有重复的数据；
+    /*
+    let arr = [];
+    let obj = {};
+    */
+
+    let set = new Set(['张三','李四','王五','张三'])
+    console.log(set);
+
+    //2.一个属性；集合中的size就是数组中的length；
+    //console.log(set.size);
+
+    //3.四个方法；可以类似jquery中的链式调用；
+    //add
+    //set.add('李六').add('nnn')
+    //console.log(set);
+
+    //delete
+    //返回一个布尔值；
+    //console.log(set.delete('张三'));
+    //console.log(set);
+
+    //has;
+    //返回布尔值；是看集合中有没有value;
+    //console.log(set.has('张三'));
+
+    //clear;
+    //清空集合；
+    set.clear();
+    console.log(set);
+</script>
+</body>
+</html>
