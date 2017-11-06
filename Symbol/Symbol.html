@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>新数据类型Symbol</title>
+</head>
+<body>
+<script>
+    //应用场景：es5的对象属性名都是字符串，容易造成属性名冲突；
+    //         es6引入新的原始数据类型Symbol,表示独一无二的值；
+
+    //对象的属性名可以有两种类型：字符串类型； Symbol类型；
+
+    //1.定义；
+    //let str1 = Symbol();
+    //let str2 = Symbol();
+    //console.log(str1 === str2);
+    //console.log(typeof str1);
+    //console.log(typeof str2);
+
+    //2.描述;
+    /*
+    let str3 = Symbol('name');
+    let str4 = Symbol('name');
+    console.log(str3);
+    console.log(str4);
+    console.log(str3 === str4);
+    */
+
+    //3.对象的属性名；最常用;
+    const obj = {};
+    /*
+    obj.name = '张三';
+    obj.name = '李四';
+    */
+    obj[Symbol('name')] = '张三';
+    obj[Symbol('name')] = '李四';
+
+    console.log(obj);
+</script>
+</body>
+</html>
