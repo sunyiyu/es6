@@ -2,7 +2,7 @@ export function multiply(x, y) {
     return x * y;
 }
 
-// 注意：导出必须是借口，不能是值；
+// 注意：导出必须是接口，不能是值；
 // 例如：export 1;就会报错；
 
 // var m = 1;
